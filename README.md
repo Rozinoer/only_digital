@@ -15,8 +15,8 @@
 ## ⚙️ Установка
 
 ```bash
-git clone <repo-url>
-cd <project-name>
+git clone git@github.com:Rozinoer/only_digital.git
+cd only_digital
 npm install
 ```
 
