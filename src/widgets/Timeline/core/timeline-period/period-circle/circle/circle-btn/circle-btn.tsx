@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import { HTMLAttributes } from "react";
-import * as styles from "./circle-btn.module.scss";
+import clsx from 'clsx';
+import { HTMLAttributes } from 'react';
+
+import * as styles from './circle-btn.module.scss';
 
 export const CircleButton = ({
   index,
@@ -22,15 +23,15 @@ export const CircleButton = ({
         onClick={onClick}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
-        className={clsx(styles["circle-btn"], isActive ? styles["active"] : "")}
+        className={clsx(styles['circle-btn'], isActive ? styles['active'] : '')}
         style={{
-          left: `calc(50% + ${x}px - ${"4px"})`,
-          top: `calc(50% + ${y}px -  ${"4px"})`,
+          left: `calc(50% + ${x}px - ${'4px'})`,
+          top: `calc(50% + ${y}px -  ${'4px'})`,
         }}
       >
         <div style={{ transform: `rotate(${deg}deg)` }}>
           <span>{index + 1}</span>
-          {isActive && <span className={styles["theme"]}>{theme}</span>}
+          {isActive && <span className={styles['theme']}>{theme}</span>}
         </div>
       </button>
     </>

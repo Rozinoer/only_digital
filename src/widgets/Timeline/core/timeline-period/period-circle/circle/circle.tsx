@@ -1,9 +1,9 @@
-import { gsap } from "gsap";
-import React, { useRef, useState } from "react";
-import { CircleButton } from "./circle-btn/circle-btn";
+import { gsap } from 'gsap';
+import React, { useRef, useState } from 'react';
+import { useTimelineContext } from 'widgets/Timeline/context/TimelineContextProvider';
 
-import { useTimelineContext } from "widgets/Timeline/context/TimelineContextProvider";
-import * as styles from "./circle.module.scss";
+import { CircleButton } from './circle-btn/circle-btn';
+import * as styles from './circle.module.scss';
 
 function getDotPosition(deg: number, radius = 250) {
   const rad = (deg * Math.PI) / 180;
@@ -13,20 +13,14 @@ function getDotPosition(deg: number, radius = 250) {
   return { x, y };
 }
 
-type TCircleProps = Pick<
-  ReturnType<typeof useTimelineContext>,
-  "themes" | "changePage"
->;
+type TCircleProps = Pick<ReturnType<typeof useTimelineContext>, 'themes' | 'changePage'>;
 
 export const Circle = ({ themes, changePage }: TCircleProps) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [circleRotation, setCircleRotation] = useState(0);
 
   const degrees = 360 / themes.length;
-  const positions = Array.from(
-    { length: themes.length },
-    (_, i) => i * degrees + 60
-  );
+  const positions = Array.from({ length: themes.length }, (_, i) => i * degrees + 60);
 
   const circleRef = useRef(null);
 
@@ -39,7 +33,7 @@ export const Circle = ({ themes, changePage }: TCircleProps) => {
     gsap.to(circleRef.current, {
       rotation: rotation,
       duration: 2,
-      ease: "power2",
+      ease: 'power2',
       direction: 1,
       onComplete: () => {
         setActiveIndex(targetIndex);
@@ -56,8 +50,8 @@ export const Circle = ({ themes, changePage }: TCircleProps) => {
   };
 
   return (
-    <div className={styles["circle-container"]}>
-      <div ref={circleRef} className={styles["circle"]}>
+    <div className={styles['circle-container']}>
+      <div ref={circleRef} className={styles['circle']}>
         {positions.map((deg, i) => {
           const { x, y } = getDotPosition(deg);
 

@@ -1,33 +1,33 @@
 @mixin flex_center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin absolute_center_x {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @mixin absolute_center_y {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @mixin absolute_center {
-	@include absolute_center_x;
-	@include absolute_center_y;
-	transform: translateY(-50%) translateX(-50%);
+  @include absolute_center_x;
+  @include absolute_center_y;
+  transform: translateY(-50%) translateX(-50%);
 }
 
 @mixin circle($size) {
-	@include wh-size($size);
-	border-radius: 50%;
+  @include wh-size($size);
+  border-radius: 50%;
 }
 
 @mixin wh-size($size) {
-	width: $size;
-	height: $size;
+  width: $size;
+  height: $size;
 }

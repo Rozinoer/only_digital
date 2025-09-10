@@ -1,15 +1,16 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
+import { TimelineData } from 'shared/data/type';
+import { TimelineContextProvider } from 'widgets/Timeline/context/TimelineContextProvider';
 
-import * as styles from "./timeline.module.scss";
-import { TimelineContextProvider } from "widgets/Timeline/context/TimelineContextProvider";
-import { TimelineData } from "shared/data/type";
+import * as styles from './timeline.module.scss';
 
-export const Timeline = ({
-  children,
-  data,
-}: PropsWithChildren<{ data: TimelineData }>) => {
+type TTimeline = PropsWithChildren<{
+  data: TimelineData;
+}>;
+
+export const Timeline = ({ children, data }: TTimeline) => {
   return (
-    <section className={styles["timeline"]}>
+    <section className={styles['timeline']}>
       <TimelineContextProvider data={data}>{children}</TimelineContextProvider>
     </section>
   );

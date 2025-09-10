@@ -1,5 +1,6 @@
-import clsx from "clsx";
-import * as styles from "./slide.module.scss";
+import clsx from 'clsx';
+
+import * as styles from './slide.module.scss';
 
 export const SlideContent = ({
   content,
@@ -10,7 +11,7 @@ export const SlideContent = ({
 }) => {
   return (
     <div
-      className={clsx(styles["swiper-slide__content"], isNext && "disabled")}
+      className={clsx(styles['swiper-slide__content'], isNext && 'disabled')}
       style={{ opacity: isNext ? 0.5 : 1 }}
     >
       <h3>{content.title}</h3>

@@ -1,5 +1,5 @@
-import { createContext, PropsWithChildren, useContext, useState } from "react";
-import { TimelineData } from "shared/data/type";
+import { PropsWithChildren, createContext, useContext, useState } from 'react';
+import { TimelineData } from 'shared/data/type';
 
 type TTimelineContext = {
   data: TimelineData[number];
@@ -15,9 +15,7 @@ export const useTimelineContext = () => {
   const context = useContext(TimelineContext);
 
   if (!context) {
-    throw new Error(
-      "useTimelineData must be used within a TimelineContextProvider"
-    );
+    throw new Error('useTimelineData must be used within a TimelineContextProvider');
   }
 
   return context;
@@ -41,9 +39,5 @@ export const TimelineContextProvider = ({
     changePage: hangePage,
   };
 
-  return (
-    <TimelineContext.Provider value={context}>
-      {children}
-    </TimelineContext.Provider>
-  );
+  return <TimelineContext.Provider value={context}>{children}</TimelineContext.Provider>;
 };

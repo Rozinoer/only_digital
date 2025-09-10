@@ -1,34 +1,31 @@
-import clsx from "clsx";
+import clsx from 'clsx';
+import { HTMLAttributes } from 'react';
+import ArrowIcon from 'shared/svg/ArrowIcon';
 
-import ArrowIcon from "shared/svg/ArrowIcon";
-import * as styles from "./pagination-btn.module.scss";
-import { HTMLAttributes } from "react";
+import * as styles from './pagination-btn.module.scss';
 
 interface SwiperButtonProps {
-  direction?: "left" | "right";
+  direction?: 'left' | 'right';
   className?: string;
-  variant?: "swiper" | "default";
+  variant?: 'swiper' | 'default';
 }
 
 export const PaginationButton = ({
-  direction = "right",
+  direction = 'right',
   className,
-  variant = "default",
+  variant = 'default',
   ...rest
 }: SwiperButtonProps & HTMLAttributes<HTMLButtonElement>) => {
   return (
     <button
       {...rest}
       className={clsx(
-        styles["pagination-button"],
+        styles['pagination-button'],
         styles[`pagination-button--${variant}`],
-        className
+        className,
       )}
     >
-      <ArrowIcon
-        direction={direction}
-        className={styles["pagination-button__icon"]}
-      />
+      <ArrowIcon direction={direction} className={styles['pagination-button__icon']} />
     </button>
   );
 };

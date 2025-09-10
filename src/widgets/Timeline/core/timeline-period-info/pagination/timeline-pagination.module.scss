@@ -1,46 +1,46 @@
-@use "mixin";
+@use 'mixin';
 
 .timeline-pagination {
-	align-self: flex-start;
-	padding: 0 var(--inner-padding) 24px;
+  align-self: flex-start;
+  padding: 0 var(--inner-padding) 24px;
 
-	p {
-		font-size: 0.7rem;
-	}
+  p {
+    font-size: 0.7rem;
+  }
 
-	div {
-		display: flex;
-		gap: 8px;
+  div {
+    display: flex;
+    gap: 8px;
 
-		.arrow {
-			z-index: 10;
-			@include mixin.circle(50px);
-			font-size: 0.7rem;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-	}
+    .arrow {
+      z-index: 10;
+      @include mixin.circle(50px);
+      font-size: 0.7rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 
-	@media (max-width: 320px) {
-		padding: 0 10px;
-		margin-top: 8px;
+  @media (max-width: 320px) {
+    padding: 0 10px;
+    margin-top: 8px;
 
-		top: unset;
-		bottom: 0;
+    top: unset;
+    bottom: 0;
 
-		p {
-			font-size: 1rem;
-		}
+    p {
+      font-size: 1rem;
+    }
 
-		div {
-			gap: 8px;
-			.arrow {
-				width: 25px;
-				height: 25px;
-				font-size: 1rem;
-			}
-		}
-	}
+    div {
+      gap: 8px;
+      .arrow {
+        width: 25px;
+        height: 25px;
+        font-size: 1rem;
+      }
+    }
+  }
 }

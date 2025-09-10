@@ -1,5 +1,5 @@
-import { mockData } from "shared/data/data";
-import { Timeline, TimelinePeriod, TimelinePeriodInfo } from "widgets/Timeline";
+import { mockData } from 'shared/data/data';
+import { Timeline, TimelinePeriod, TimelinePeriodInfo } from 'widgets/Timeline';
 
 const MainPage = () => {
   return (

@@ -1,31 +1,31 @@
 .timeline {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	position: relative;
-	height: 100%;
-	width: 100%;
-	min-width: var(--large-breakpoint);
-	border-left: var(--border-width) solid var(--color-border);
-	border-right: var(--border-width) solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-width: var(--large-breakpoint);
+  border-left: var(--border-width) solid var(--color-border);
+  border-right: var(--border-width) solid var(--color-border);
 
-	&::before {
-		content: "";
-		position: absolute;
-		width: var(--border-width);
-		height: 100%;
-		background-color: var(--color-border);
-		top: 0;
-		left: 50%;
-		z-index: -1;
-	}
+  &::before {
+    content: '';
+    position: absolute;
+    width: var(--border-width);
+    height: 100%;
+    background-color: var(--color-border);
+    top: 0;
+    left: 50%;
+    z-index: -1;
+  }
 
-	@media (max-width: 320px) {
-		&::before {
-			content: none;
-		}
-		max-width: 320px;
-		min-width: 0;
-		border: none;
-	}
+  @media (max-width: 320px) {
+    &::before {
+      content: none;
+    }
+    max-width: 320px;
+    min-width: 0;
+    border: none;
+  }
 }

@@ -1,14 +1,14 @@
-import * as styles from "./period-range.module.scss";
+import { useTimelineContext } from 'widgets/Timeline/context/TimelineContextProvider';
 
-import { Circle } from "./circle/circle";
-import { Period } from "./period/period";
-import { useTimelineContext } from "widgets/Timeline/context/TimelineContextProvider";
+import { Circle } from './circle/circle';
+import * as styles from './period-range.module.scss';
+import { Period } from './period/period';
 
 export const PeriodCircle = () => {
   const { themes, changePage, data } = useTimelineContext();
 
   return (
-    <div className={styles["timeline_date"]}>
+    <div className={styles['timeline_date']}>
       <Circle themes={themes} changePage={changePage} />
       <Period period={data.period} />
     </div>

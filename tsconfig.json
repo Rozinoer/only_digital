@@ -17,7 +17,7 @@
     "lib": ["DOM", "DOM.Iterable", "ES6"],
     "paths": {
       "widgets/*": ["./src/widgets/*"],
-       "shared/*": ["./src/shared/*"]
+      "shared/*": ["./src/shared/*"]
     }
   },
   "include": ["./src"],
