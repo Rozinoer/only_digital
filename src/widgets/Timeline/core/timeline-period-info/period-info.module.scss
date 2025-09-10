@@ -1,0 +1,13 @@
+.period_info {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	@media (max-width: 320px) {
+		height: 50%;
+		justify-content: space-between;
+		& > div:first-child {
+			order: 1;
+		}
+	}
+}

@@ -1,0 +1,29 @@
+@use "mixin";
+
+.timeline_period-picker {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    @include mixin.flex_center;
+
+    @media (max-width: 320px) {
+        justify-content: flex-start;
+        height: 50%;
+        margin-bottom: 8px;
+        padding: 0 5px;
+        gap: 4rem;
+
+        flex-direction: column;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-border);
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+    }
+}

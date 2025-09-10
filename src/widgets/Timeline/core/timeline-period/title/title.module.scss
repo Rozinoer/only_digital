@@ -1,0 +1,39 @@
+.title_wrapper {
+  align-self: flex-start;
+  padding: 0 var(--inner-padding);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .title {
+    position: relative;
+    color: var(--color-accent);
+    font-size: 2.8rem;
+    line-height: 120%;
+    font-weight: bold;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: calc(-1 * var(--inner-padding));
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(0deg, var(--color-secondary), var(--color-primary));
+    }
+  }
+
+  @media (max-width: 320px) {
+    padding: 0;
+    padding-top: 3rem;
+    position: static;
+
+    .title {
+      font-size: 20px;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+}

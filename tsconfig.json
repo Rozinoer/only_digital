@@ -1,0 +1,25 @@
+{
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "moduleResolution": "bundler",
+    "rootDir": ".",
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ES6"],
+    "paths": {
+      "widgets/*": ["./src/widgets/*"],
+       "shared/*": ["./src/shared/*"]
+    }
+  },
+  "include": ["./src"],
+  "files": ["webpack.config.ts"]
+}

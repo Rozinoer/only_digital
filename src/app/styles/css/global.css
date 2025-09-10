@@ -1,0 +1,66 @@
+:root {
+  --color-bg: #f4f5f9;
+  --color-block: #fff;
+  --color-text: #42567a;
+  --color-muted: #6e6f77;
+
+  --color-accent: #42567a;
+  --color-accent-hover: #e14c00;
+
+  --color-primary: #3877ee;
+  --color-secondary: #ef5da8;
+
+  --color-border: #d9d9d9;
+
+  --border-width: 1px;
+
+  --main-font: "PT Sans";
+  --inner-padding: 78px;
+
+  --x-padding-mobile: 12px;
+  --y-padding-mobile: 16px;
+
+  --large-breakpoint: 992px;
+  --small-breakpoint: 320px;
+
+  --container-width: 1440px;
+  --container-height: 1080px;
+}
+
+html {
+  font-size: 20px;
+  font-family: var(--main-font);
+  color: var(--color-text);
+
+  @media (max-width: 320px) {
+    font-size: 14px;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.app_container {
+  margin: 0 auto;
+  max-width: var(--container-width);
+  max-height: var(--container-height);
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 320px) {
+    padding: var(--x-padding-mobile) var(--y-padding-mobile);
+    max-width: var(--small-breakpoint);
+    max-height: var(--container-height);
+  }
+}
