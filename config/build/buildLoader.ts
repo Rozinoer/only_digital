@@ -6,13 +6,11 @@ import { RuleSetRule } from 'webpack';
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 type TBuildLoaders = {
-  mode?: 'development' | 'production';
+  isDev: boolean;
   rootDir: string;
 };
 
-export const buildLoaders = ({ rootDir, mode }: TBuildLoaders): RuleSetRule[] => {
-  const isDev = mode === 'development';
-
+export const buildLoaders = ({ rootDir, isDev }: TBuildLoaders): RuleSetRule[] => {
   // Общие sassOptions для всех scss
   const sassLoaderOptions: Options = {
     sourceMap: isDev,

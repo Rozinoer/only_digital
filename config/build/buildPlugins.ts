@@ -4,11 +4,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import { WebpackPluginInstance } from 'webpack';
 
-export const buildPlugins = (): WebpackPluginInstance[] => {
-  // console.log(__dirname);
+export const buildPlugins = (dirName: string): WebpackPluginInstance[] => {
+
   return [
     new HtmlWebpackPlugin({
-      template: path.resolve('/Users/evgenii/Desktop/only-digital', 'public', 'index.html'),
+      template: path.resolve(dirName, 'public', 'index.html'),
     }),
 
     new MiniCssExtractPlugin({
