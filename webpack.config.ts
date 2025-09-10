@@ -8,8 +8,6 @@ import { buildDevServer } from './config/build/buildDevServer';
 import { buildLoaders } from './config/build/buildLoader';
 import { buildPlugins } from './config/build/buildPlugins';
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 const buildConfig = (
   mode: webpack.WebpackOptionsNormalized['mode'],
 ): webpack.Configuration & Configuration => {
@@ -46,7 +44,5 @@ export default (
   env: Record<string, unknown>,
   args: webpack.WebpackOptionsNormalized,
 ): Configuration => {
-  console.log('props', env, args);
-
   return buildConfig(args.mode);
 };

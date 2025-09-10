@@ -1,6 +1,7 @@
-@use 'mixin';
+@use "mixin";
 
 .timeline-swapper__wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -13,7 +14,12 @@
     height: 144px;
 
     @media (max-width: 320px) {
+      position: static;
       padding: 0;
+
+      .swiper-slide-next {
+        opacity: 0.5;
+      }
     }
   }
 

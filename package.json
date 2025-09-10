@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
-    "serve": "webpack serve",
+    "serve": "webpack serve --mode=development",
     "watch": "webpack --watch",
     "format": "prettier --write ."
   },

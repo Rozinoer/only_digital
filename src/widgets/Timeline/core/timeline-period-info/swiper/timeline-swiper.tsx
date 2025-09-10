@@ -21,11 +21,9 @@ export const TimelineSwiper = ({ slides }: { slides: TimelineData[number]['event
           prevEl: '.swiper-notes__arrow.left',
           nextEl: '.swiper-notes__arrow.right',
         }}
+        watchSlidesProgress={true}
+        className="swiper-notes"
         breakpoints={{
-          640: {
-            slidesPerView: 2.2,
-            spaceBetween: 20,
-          },
           1024: {
             slidesPerView: 3.5,
             spaceBetween: 24,
@@ -34,7 +32,7 @@ export const TimelineSwiper = ({ slides }: { slides: TimelineData[number]['event
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            {({ isNext }) => <SlideContent content={slide} isNext={isNext} />}
+             <SlideContent content={slide}  />
           </SwiperSlide>
         ))}
       </Swiper>
