@@ -18,6 +18,7 @@ type TCircleProps = Pick<ReturnType<typeof useTimelineContext>, 'themes' | 'chan
 export const Circle = ({ themes, changePage }: TCircleProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [circleRotation, setCircleRotation] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
 
   const degrees = 360 / themes.length;
   const positions = Array.from({ length: themes.length }, (_, i) => i * degrees + 60);
@@ -36,15 +37,15 @@ export const Circle = ({ themes, changePage }: TCircleProps) => {
       ease: 'power2',
       direction: 1,
       onComplete: () => {
-        setActiveIndex(targetIndex);
+        setIsComplete(true);
       },
       onStart: () => {
         changePage(targetIndex);
-        setActiveIndex(null);
+        setIsComplete(false);
+        setActiveIndex(targetIndex);
       },
       onUpdate: function () {
-        const progress = this.progress();
-        setCircleRotation(rotation * progress * -1);
+        setCircleRotation(rotation * -1);
       },
     });
   };
@@ -59,6 +60,7 @@ export const Circle = ({ themes, changePage }: TCircleProps) => {
             <CircleButton
               key={i + circleRotation}
               isActive={activeIndex === i}
+              isComplete={isComplete && activeIndex === i}
               index={i}
               onClick={() => handleClick(i)}
               position={{ x, y, deg: circleRotation }}

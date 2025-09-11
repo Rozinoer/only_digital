@@ -6,6 +6,7 @@ import * as styles from './circle-btn.module.scss';
 export const CircleButton = ({
   index,
   isActive,
+  isComplete,
   onClick,
   onMouseMove,
   onMouseLeave,
@@ -14,6 +15,7 @@ export const CircleButton = ({
 }: HTMLAttributes<HTMLButtonElement> & {
   index: number;
   isActive: boolean;
+  isComplete: boolean;
   position: { x: number; y: number; deg?: number };
   theme: string;
 }) => {
@@ -33,7 +35,7 @@ export const CircleButton = ({
         {/* display: inline-block; height: 50px; line-height: 50px */}
         <div style={{ transform: `rotate(${deg}deg)` }}>
           <span>{index + 1}</span>
-          {isActive && <span className={styles['theme']}>{theme}</span>}
+          {isComplete && <span className={styles['theme']}>{theme}</span>}
         </div>
       </button>
     </>
