@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { emitter } from 'shared/event-emitter/event-emitter';
 import { PaginationButton } from 'widgets/Timeline/common/ui/pagination-btn/pagination-btn';
 
@@ -33,8 +34,16 @@ export const TimelinePagination = (props: TTimelinePagination) => {
     <div className={styles['timeline-pagination']}>
       <p>{formattedPage + formattedTotal}</p>
       <div>
-        <PaginationButton onClick={handlePrev} direction="left" className={styles['arrow']} />
-        <PaginationButton onClick={handleNext} direction="right" className={styles['arrow']} />
+        <PaginationButton
+          onClick={handlePrev}
+          direction="left"
+          className={clsx(styles['arrow'], !page ? styles['semi-opacity'] : '')}
+        />
+        <PaginationButton
+          onClick={handleNext}
+          direction="right"
+          className={clsx(styles['arrow'], page === totalPages - 1 ? styles['semi-opacity'] : '')}
+        />
       </div>
     </div>
   );
