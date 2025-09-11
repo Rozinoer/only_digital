@@ -1,4 +1,4 @@
-import { PaginationButton } from 'widgets/Timeline/common/pagination-btn/pagination-btn';
+import { PaginationButton } from 'widgets/Timeline/common/ui/pagination-btn/pagination-btn';
 
 import * as styles from './timeline-pagination.module.scss';
 

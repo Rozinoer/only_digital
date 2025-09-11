@@ -4,13 +4,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-import { PaginationButton } from 'widgets/Timeline/common/pagination-btn/pagination-btn';
+import { PaginationButton } from 'widgets/Timeline/common/ui/pagination-btn/pagination-btn';
 
 import { SlideContent } from './slide-content/slide-content';
 import './timeline-swiper.scss';
 
-export const TimelineSwiper = ({ slides }: { slides: TimelineData[number]['events'] }) => (
-  <div className="timeline-swapper__wrapper">
+export const TimelineSwiper = ({
+  slides,
+  isVisible,
+}: {
+  slides: TimelineData[number]['events'];
+  isVisible: boolean;
+}) => (
+  <div className={`timeline-swapper__wrapper ${isVisible ? 'show' : 'hide'}`}>
     <div>
       <Swiper
         modules={[Navigation, Pagination]}
@@ -32,7 +38,7 @@ export const TimelineSwiper = ({ slides }: { slides: TimelineData[number]['event
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-             <SlideContent content={slide}  />
+            <SlideContent content={slide} />
           </SwiperSlide>
         ))}
       </Swiper>

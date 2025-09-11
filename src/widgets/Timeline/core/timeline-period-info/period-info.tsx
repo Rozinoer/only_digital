@@ -11,11 +11,12 @@ export const TimelinePeriodInfo = () => {
     totalPages,
     changePage,
     data: { events },
+    isChangeComplete
   } = useTimelineContext();
   return (
     <div className={styles['period_info']}>
       <TimelinePagination changePage={changePage} page={page} totalPages={totalPages} />
-      <TimelineSwiper slides={events} key={page} />
+      <TimelineSwiper slides={events} key={page} isVisible={isChangeComplete} />
     </div>
   );
 };

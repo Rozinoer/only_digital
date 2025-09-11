@@ -8,6 +8,8 @@ type TTimelineContext = {
   totalPages: number;
   themes: string[];
   theme: string;
+  isChangeComplete: boolean;
+  setChangeComplete: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const TimelineContext = createContext<TTimelineContext | null>(null);
@@ -27,8 +29,9 @@ export const TimelineContextProvider = ({
   data,
 }: PropsWithChildren<{ data: TimelineData }>) => {
   const [page, setPage] = useState(0);
+  const [isChangeComplete, setChangeComplete] = useState(true);
 
-  const hangePage = (newPage: number) => {
+  const changePage = (newPage: number) => {
     setPage(newPage);
   };
 
@@ -37,8 +40,10 @@ export const TimelineContextProvider = ({
     theme: data[page].theme,
     data: data[page],
     page: page,
+    changePage: changePage,
     totalPages: data.length,
-    changePage: hangePage,
+    isChangeComplete,
+    setChangeComplete,
   };
 
   return <TimelineContext.Provider value={context}>{children}</TimelineContext.Provider>;

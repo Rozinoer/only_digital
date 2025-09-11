@@ -1,27 +1,17 @@
 import { gsap } from 'gsap';
-import React, { useRef, useState } from 'react';
-import { useTimelineContext } from 'widgets/Timeline/context/TimelineContextProvider';
+import { useRef } from 'react';
+import { useCircleState } from 'widgets/Timeline/hooks/useCircleState';
+import { TCircleProps } from 'widgets/Timeline/types/types';
 
+import { getDotPosition, getPositions } from '../../../../common/utils/circle-utils';
 import { CircleButton } from './circle-btn/circle-btn';
 import * as styles from './circle.module.scss';
 
-function getDotPosition(deg: number, radius = 250) {
-  const rad = (deg * Math.PI) / 180;
-  const x = Math.cos(rad) * radius;
-  const y = -Math.sin(rad) * radius;
+export const Circle = ({ themes }: TCircleProps) => {
+  const { onComplete, onStart, onUpdate, activeIndex, isComplete, circleRotation } =
+    useCircleState();
 
-  return { x, y };
-}
-
-type TCircleProps = Pick<ReturnType<typeof useTimelineContext>, 'themes' | 'changePage'>;
-
-export const Circle = ({ themes, changePage }: TCircleProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [circleRotation, setCircleRotation] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
-
-  const degrees = 360 / themes.length;
-  const positions = Array.from({ length: themes.length }, (_, i) => i * degrees + 60);
+  const positions = getPositions(themes.length);
 
   const circleRef = useRef(null);
 
@@ -29,45 +19,31 @@ export const Circle = ({ themes, changePage }: TCircleProps) => {
     const targetAngle = positions[targetIndex];
     const rotation = targetAngle - 60;
 
-    console.log({ rotation });
-
     gsap.to(circleRef.current, {
       rotation: rotation,
       duration: 2,
       ease: 'power2',
       direction: 1,
-      onComplete: () => {
-        setIsComplete(true);
-      },
-      onStart: () => {
-        changePage(targetIndex);
-        setIsComplete(false);
-        setActiveIndex(targetIndex);
-      },
-      onUpdate: function () {
-        setCircleRotation(rotation * -1);
-      },
+      onComplete,
+      onStart: () => onStart(targetIndex),
+      onUpdate: () => onUpdate(rotation),
     });
   };
 
   return (
     <div className={styles['circle-container']}>
       <div ref={circleRef} className={styles['circle']}>
-        {positions.map((deg, i) => {
-          const { x, y } = getDotPosition(deg);
-
-          return (
-            <CircleButton
-              key={i + circleRotation}
-              isActive={activeIndex === i}
-              isComplete={isComplete && activeIndex === i}
-              index={i}
-              onClick={() => handleClick(i)}
-              position={{ x, y, deg: circleRotation }}
-              theme={themes[i]}
-            />
-          );
-        })}
+        {positions.map((deg, i) => (
+          <CircleButton
+            key={i}
+            isActive={activeIndex === i}
+            isComplete={isComplete && activeIndex === i}
+            index={i}
+            onClick={() => handleClick(i)}
+            position={{ ...getDotPosition(deg), deg: circleRotation }}
+            theme={themes[i]}
+          />
+        ))}
       </div>
     </div>
   );

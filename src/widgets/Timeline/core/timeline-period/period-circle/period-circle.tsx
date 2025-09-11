@@ -5,7 +5,7 @@ import * as styles from './period-range.module.scss';
 import { Period } from './period/period';
 
 export const PeriodCircle = () => {
-  const { themes, changePage, data, theme } = useTimelineContext();
+  const { themes, changePage, data, theme, page } = useTimelineContext();
 
   return (
     <>
