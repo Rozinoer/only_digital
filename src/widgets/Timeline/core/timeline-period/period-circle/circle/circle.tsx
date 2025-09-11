@@ -1,5 +1,3 @@
-
-
 import { useCircleState } from 'widgets/Timeline/hooks/useCircleState';
 import { TCircleProps } from 'widgets/Timeline/types/types';
 

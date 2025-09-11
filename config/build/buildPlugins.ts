@@ -5,7 +5,6 @@ import path from 'path';
 import { WebpackPluginInstance } from 'webpack';
 
 export const buildPlugins = (dirName: string): WebpackPluginInstance[] => {
-
   return [
     new HtmlWebpackPlugin({
       template: path.resolve(dirName, 'public', 'index.html'),

@@ -11,7 +11,7 @@ export const TimelinePeriodInfo = () => {
     totalPages,
     changePage,
     data: { events },
-    isChangeComplete
+    isChangeComplete,
   } = useTimelineContext();
   return (
     <div className={styles['period_info']}>
