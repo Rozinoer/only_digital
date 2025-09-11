@@ -3,7 +3,7 @@
 .timeline_period-picker {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 55%;
   @include mixin.flex_center;
 
   @media (max-width: 320px) {
