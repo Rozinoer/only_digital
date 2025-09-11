@@ -1,3 +1,4 @@
+import { emitter } from 'shared/event-emitter/event-emitter';
 import { PaginationButton } from 'widgets/Timeline/common/ui/pagination-btn/pagination-btn';
 
 import * as styles from './timeline-pagination.module.scss';
@@ -14,12 +15,14 @@ export const TimelinePagination = (props: TTimelinePagination) => {
   const handlePrev = () => {
     if (changePage && page > 0) {
       changePage(page - 1);
+      emitter.emit('rotate', page - 1);
     }
   };
 
   const handleNext = () => {
     if (changePage && totalPages && page < totalPages - 1) {
       changePage(page + 1);
+      emitter.emit('rotate', page + 1);
     }
   };
 

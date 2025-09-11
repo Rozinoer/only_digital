@@ -1,5 +1,5 @@
-import { gsap } from 'gsap';
-import { useRef } from 'react';
+
+
 import { useCircleState } from 'widgets/Timeline/hooks/useCircleState';
 import { TCircleProps } from 'widgets/Timeline/types/types';
 
@@ -8,27 +8,8 @@ import { CircleButton } from './circle-btn/circle-btn';
 import * as styles from './circle.module.scss';
 
 export const Circle = ({ themes }: TCircleProps) => {
-  const { onComplete, onStart, onUpdate, activeIndex, isComplete, circleRotation } =
-    useCircleState();
-
-  const positions = getPositions(themes.length);
-
-  const circleRef = useRef(null);
-
-  const handleClick = (targetIndex: number) => {
-    const targetAngle = positions[targetIndex];
-    const rotation = targetAngle - 60;
-
-    gsap.to(circleRef.current, {
-      rotation: rotation,
-      duration: 2,
-      ease: 'power2',
-      direction: 1,
-      onComplete,
-      onStart: () => onStart(targetIndex),
-      onUpdate: () => onUpdate(rotation),
-    });
-  };
+  const { activeIndex, isComplete, circleRotation, positions, onRotate, circleRef } =
+    useCircleState({ dots: themes.length });
 
   return (
     <div className={styles['circle-container']}>
@@ -39,7 +20,7 @@ export const Circle = ({ themes }: TCircleProps) => {
             isActive={activeIndex === i}
             isComplete={isComplete && activeIndex === i}
             index={i}
-            onClick={() => handleClick(i)}
+            onClick={() => onRotate(i)}
             position={{ ...getDotPosition(deg), deg: circleRotation }}
             theme={themes[i]}
           />
