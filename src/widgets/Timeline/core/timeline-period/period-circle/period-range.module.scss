@@ -8,7 +8,7 @@
   padding: 2rem 0;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: var(--border-width);
@@ -30,5 +30,15 @@
     &::after {
       content: none;
     }
+  }
+}
+
+.theme {
+  align-self: flex-start;
+  margin-bottom: 24px;
+  font-weight: bold;
+
+  @media (min-width: 321px) {
+    display: none;
   }
 }

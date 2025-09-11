@@ -25,10 +25,12 @@ export const CircleButton = ({
         onMouseLeave={onMouseLeave}
         className={clsx(styles['circle-btn'], isActive ? styles['active'] : '')}
         style={{
-          left: `calc(50% + ${x}px - ${'4px'})`,
-          top: `calc(50% + ${y}px -  ${'4px'})`,
+          left: `calc(50% + ${x}px )`,
+          top: `calc(50% + ${y}px )`,
+          transform: 'translate(-50%, -50%)',
         }}
       >
+        {/* display: inline-block; height: 50px; line-height: 50px */}
         <div style={{ transform: `rotate(${deg}deg)` }}>
           <span>{index + 1}</span>
           {isActive && <span className={styles['theme']}>{theme}</span>}

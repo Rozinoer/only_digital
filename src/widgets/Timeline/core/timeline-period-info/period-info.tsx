@@ -1,3 +1,4 @@
+import { AnimatedContainer } from 'shared/animated-container/animated-container';
 import { useTimelineContext } from 'widgets/Timeline/context/TimelineContextProvider';
 
 import { TimelinePagination } from './pagination/timeline-pagination';
@@ -14,7 +15,7 @@ export const TimelinePeriodInfo = () => {
   return (
     <div className={styles['period_info']}>
       <TimelinePagination changePage={changePage} page={page} totalPages={totalPages} />
-      <TimelineSwiper slides={events} />
+      <TimelineSwiper slides={events} key={page} />
     </div>
   );
 };

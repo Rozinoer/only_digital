@@ -7,6 +7,7 @@ type TTimelineContext = {
   page: number;
   totalPages: number;
   themes: string[];
+  theme: string;
 };
 
 const TimelineContext = createContext<TTimelineContext | null>(null);
@@ -33,6 +34,7 @@ export const TimelineContextProvider = ({
 
   const context: TTimelineContext = {
     themes: data.map((item) => item.theme),
+    theme: data[page].theme,
     data: data[page],
     page: page,
     totalPages: data.length,

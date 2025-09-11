@@ -15,8 +15,8 @@ export const TimelineSwiper = ({ slides }: { slides: TimelineData[number]['event
       <Swiper
         modules={[Navigation, Pagination]}
         pagination={true}
-        slidesPerView={1.2}
-        spaceBetween={16}
+        slidesPerView={1.6}
+        spaceBetween={12}
         navigation={{
           prevEl: '.swiper-notes__arrow.left',
           nextEl: '.swiper-notes__arrow.right',

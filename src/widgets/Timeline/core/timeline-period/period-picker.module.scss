@@ -7,11 +7,12 @@
   @include mixin.flex_center;
 
   @media (max-width: 320px) {
-    justify-content: flex-start;
-    height: 50%;
+    justify-content: space-between;
+    min-height: 60%;
+    height: 60%;
     margin-bottom: 8px;
     padding: 0 5px;
-    gap: 4rem;
+    align-items: center;
 
     flex-direction: column;
 

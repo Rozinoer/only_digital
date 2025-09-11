@@ -16,7 +16,7 @@ function getDotPosition(deg: number, radius = 250) {
 type TCircleProps = Pick<ReturnType<typeof useTimelineContext>, 'themes' | 'changePage'>;
 
 export const Circle = ({ themes, changePage }: TCircleProps) => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [circleRotation, setCircleRotation] = useState(0);
 
   const degrees = 360 / themes.length;
@@ -61,8 +61,6 @@ export const Circle = ({ themes, changePage }: TCircleProps) => {
               isActive={activeIndex === i}
               index={i}
               onClick={() => handleClick(i)}
-              onMouseMove={() => setActiveIndex(i)}
-              onMouseLeave={() => setActiveIndex(null)}
               position={{ x, y, deg: circleRotation }}
               theme={themes[i]}
             />
