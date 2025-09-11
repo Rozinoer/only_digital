@@ -34,7 +34,7 @@ export const useCircleState = (props: TUseCircle) => {
   const circleRef = useRef(null);
   const { onComplete, onStart, onUpdate, circleRotation } = useCircle();
 
-  const { isChangeComplete, page } = useTimelineContext();
+  const { isChangeComplete, page, contextId } = useTimelineContext();
 
   const positions = getPositions(dots);
 
@@ -54,8 +54,8 @@ export const useCircleState = (props: TUseCircle) => {
   };
 
   useEffect(() => {
-    emitter.on('rotate', handleRotate);
-    return () => emitter.off('rotate', handleRotate);
+    emitter.on(`rotate_${contextId}`, handleRotate);
+    return () => emitter.off(`rotate_${contextId}`, handleRotate);
   }, []);
 
   return {

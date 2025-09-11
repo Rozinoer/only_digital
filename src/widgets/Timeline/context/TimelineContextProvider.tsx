@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useContext, useState } from 'react';
+import { PropsWithChildren, createContext, useContext, useId, useState } from 'react';
 import { TimelineData } from 'shared/data/type';
 
 type TTimelineContext = {
@@ -10,6 +10,7 @@ type TTimelineContext = {
   theme: string;
   isChangeComplete: boolean;
   setChangeComplete: React.Dispatch<React.SetStateAction<boolean>>;
+  contextId: ReturnType<typeof useId>;
 };
 
 const TimelineContext = createContext<TTimelineContext | null>(null);
@@ -28,6 +29,7 @@ export const TimelineContextProvider = ({
   children,
   data,
 }: PropsWithChildren<{ data: TimelineData }>) => {
+  const contextId = useId();
   const [page, setPage] = useState(0);
   const [isChangeComplete, setChangeComplete] = useState(true);
 
@@ -44,6 +46,7 @@ export const TimelineContextProvider = ({
     totalPages: data.length,
     isChangeComplete,
     setChangeComplete,
+    contextId,
   };
 
   return <TimelineContext.Provider value={context}>{children}</TimelineContext.Provider>;

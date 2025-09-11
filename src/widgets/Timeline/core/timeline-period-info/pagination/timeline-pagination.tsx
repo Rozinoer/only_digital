@@ -8,22 +8,23 @@ type TTimelinePagination = {
   changePage?: (newPage: number) => void;
   page: number;
   totalPages?: number;
+  contextId: string;
 };
 
 export const TimelinePagination = (props: TTimelinePagination) => {
-  const { page, changePage, totalPages } = props;
+  const { page, changePage, totalPages, contextId } = props;
 
   const handlePrev = () => {
     if (changePage && page > 0) {
       changePage(page - 1);
-      emitter.emit('rotate', page - 1);
+      emitter.emit(`rotate_${contextId}`, page - 1);
     }
   };
 
   const handleNext = () => {
     if (changePage && totalPages && page < totalPages - 1) {
       changePage(page + 1);
-      emitter.emit('rotate', page + 1);
+      emitter.emit(`rotate_${contextId}`, page + 1);
     }
   };
 

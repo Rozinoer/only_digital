@@ -22,8 +22,8 @@ class EventEmitter<Events extends Record<string, any>> {
 }
 
 // === Пример использования ===
-interface MyEvents {
-  rotate: number;
+export interface MyEvents {
+  [key: `rotate_${string}`]: number;
 }
 
 export const emitter = new EventEmitter<MyEvents>();
