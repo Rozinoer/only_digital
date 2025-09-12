@@ -5,7 +5,7 @@
 
 ## Демо
 
-![Demo](assets/demo.gif)
+![Demo](demo/demo.gif)
 
 ---
 
