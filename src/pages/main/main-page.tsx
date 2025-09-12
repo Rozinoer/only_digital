@@ -8,6 +8,7 @@ const MainPage = () => {
         <TimelinePeriod />
         <TimelinePeriodInfo />
       </Timeline>
+     
     </main>
   );
 };
