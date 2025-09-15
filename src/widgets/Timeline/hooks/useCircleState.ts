@@ -1,16 +1,18 @@
 import { gsap } from 'gsap';
-import { useEffect, useRef, useState } from 'react';
-import { emitter } from 'shared/event-emitter/event-emitter';
+import { useRef, useState } from 'react';
 import { getPositions } from 'widgets/Timeline/common/utils/circle-utils';
-import { useTimelineContext } from 'widgets/Timeline/context/TimelineContextProvider';
 
 type TUseCircle = {
-  dots?: number;
+  dots: number;
+  setChangeComplete: React.Dispatch<React.SetStateAction<boolean>>;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const useCircle = () => {
+const useCircle = ({
+  setChangeComplete,
+  setPage: changePage,
+}: Pick<TUseCircle, 'setChangeComplete' | 'setPage'>) => {
   const [circleRotation, setCircleRotation] = useState(0);
-  const { setChangeComplete, changePage } = useTimelineContext();
 
   return {
     circleRotation,
@@ -30,11 +32,13 @@ const useCircle = () => {
 };
 
 export const useCircleState = (props: TUseCircle) => {
-  const { dots } = props;
-  const circleRef = useRef(null);
-  const { onComplete, onStart, onUpdate, circleRotation } = useCircle();
+  const { dots, setPage, setChangeComplete } = props;
+  const circleRef = useRef<HTMLDivElement>(null);
 
-  const { isChangeComplete, page, contextId } = useTimelineContext();
+  const { onComplete, onStart, onUpdate, circleRotation } = useCircle({
+    setPage,
+    setChangeComplete,
+  });
 
   const positions = getPositions(dots);
 
@@ -53,16 +57,9 @@ export const useCircleState = (props: TUseCircle) => {
     });
   };
 
-  useEffect(() => {
-    emitter.on(`rotate_${contextId}`, handleRotate);
-    return () => emitter.off(`rotate_${contextId}`, handleRotate);
-  }, []);
-
   return {
     circleRef,
     positions,
-    activeIndex: page,
-    isComplete: isChangeComplete,
     circleRotation,
     onRotate: handleRotate,
   };
