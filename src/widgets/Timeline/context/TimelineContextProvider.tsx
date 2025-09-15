@@ -1,17 +1,7 @@
-import { PropsWithChildren, createContext, useContext, useId, useState } from 'react';
+import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { TimelineData } from 'shared/data/type';
-
-type TTimelineContext = {
-  data: TimelineData[number];
-  changePage: (newPage: number) => void;
-  page: number;
-  totalPages: number;
-  themes: string[];
-  theme: string;
-  isChangeComplete: boolean;
-  setChangeComplete: React.Dispatch<React.SetStateAction<boolean>>;
-  contextId: ReturnType<typeof useId>;
-};
+import { TTimelineContext } from 'widgets/Timeline/context/type';
+import { useCircleState } from 'widgets/Timeline/hooks/useCircleState';
 
 const TimelineContext = createContext<TTimelineContext | null>(null);
 
@@ -29,24 +19,26 @@ export const TimelineContextProvider = ({
   children,
   data,
 }: PropsWithChildren<{ data: TimelineData }>) => {
-  const contextId = useId();
   const [page, setPage] = useState(0);
   const [isChangeComplete, setChangeComplete] = useState(true);
 
-  const changePage = (newPage: number) => {
-    setPage(newPage);
-  };
+  const { circleRotation, positions, onRotate, circleRef } = useCircleState({
+    dots: data.length,
+    setPage,
+    setChangeComplete,
+  });
 
   const context: TTimelineContext = {
     themes: data.map((item) => item.theme),
     theme: data[page].theme,
     data: data[page],
     page: page,
-    changePage: changePage,
     totalPages: data.length,
+    circleRotation,
+    positions,
+    circleRef,
     isChangeComplete,
-    setChangeComplete,
-    contextId,
+    changePage: onRotate,
   };
 
   return <TimelineContext.Provider value={context}>{children}</TimelineContext.Provider>;
